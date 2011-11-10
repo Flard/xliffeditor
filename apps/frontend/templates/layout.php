@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
@@ -9,6 +9,34 @@
     <?php include_javascripts() ?>
   </head>
   <body>
-    <?php echo $sf_content ?>
+    <?php include_partial('global/topbar'); ?>
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+          <h1>
+		<?php include_slot('page_title', 'Page title'); ?>
+                <?php if (has_slot('page_sub_title')): ?>
+                <small><?php include_slot('page_sub_title'); ?></small>
+                <?php endif; ?>
+          </h1>
+        </div>
+        <div class="row">
+          <div class="span10">
+            <?php echo $sf_content; ?>
+          </div>
+          <div class="span4">
+            <h3>Secondary content</h3>
+            <?php include_slot('sidebar'); ?>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Company 2011</p>
+      </footer>
+
+    </div> <!-- /container -->
+
   </body>
 </html>

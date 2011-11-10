@@ -12,7 +12,8 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [main.css]
+  stylesheets:    
+    - http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css
 
   javascripts:    []
 
