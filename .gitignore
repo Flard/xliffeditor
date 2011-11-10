@@ -4,3 +4,4 @@ web/sf*
 web/fw*
 data/sql/*
 config/databases.yml
+.idea/

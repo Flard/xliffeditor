@@ -1,10 +1,10 @@
-TranslationProject:
+Project:
   columns:
     id: { type: integer, primary: true, autoincrement: true }
     name: { type: string(50), notnull: true }
     token: { type: string(32), notnull: true }
   
-TranslationProjectLanguage:
+ProjectLanguage:
   columns:
     id: { type: integer, primary: true, autoincrement: true }
     project_id: { type: integer, notnull: true }
@@ -12,12 +12,11 @@ TranslationProjectLanguage:
     lang: { type: string(5), notnull: true }
   relations:
     Project:
-      class: TranslationProject
       local: project_id
       foreign: id
       foreignAlias: Languages
 
-TranslationFile:
+Resource:
   columns:
     id: { type: integer, primary: true, autoincrement: true }
     project_id: { type: integer, notnull: true }
@@ -25,8 +24,36 @@ TranslationFile:
     filename: { type: string(50), notnull: true }
   relations:
     Project:
-      class: TranslationProject
       local: project_id
       foreign: id
       foreignAlias: Files
 
+ResourceLine:
+  columns:
+    id: { type: integer, primary: true, autoincrement: true }
+    resource_id: { type: integer, notnull: true }
+    source_text: { type: clob }
+    remarks: { type: clob }
+  relations:
+    Resource:
+      local: resource_id
+      foreign: id
+      foreignAlias: Lines
+
+ResourceLineTranslations:
+  columns:
+    line_id: { type: integer, primary: true }
+    language_id: { type: integer, primary: true }
+    target_text: { type: clob }
+    remarks: { type: clob }
+  relations:
+    Line:
+      class: ResourceLine
+      local: line_id
+      foreign: id
+      foreignAlias: Translations
+    Language:
+      class: ProjectLanguage
+      local: language_id
+      foreign: id
+      
