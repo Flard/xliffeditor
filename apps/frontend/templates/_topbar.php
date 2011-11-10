@@ -3,9 +3,9 @@
         <div class="container">
           <a class="brand" href="#">XLIFF Editor</a>
           <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="#"><?php echo __('Home'); ?></a></li>
+            <li><a href="#about"><?php echo __('About'); ?></a></li>
+            <li><a href="#contact"><?php echo __('Contact'); ?></a></li>
           </ul>
           <form action="" class="pull-right">
             <input class="input-small" type="text" placeholder="Username">
