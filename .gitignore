@@ -1,0 +1,5 @@
+log/*
+cache/*
+web/sf*
+web/fw*
+data/sql/*
