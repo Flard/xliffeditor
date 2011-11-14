@@ -12,5 +12,21 @@
  */
 class ResourceLine extends BaseResourceLine
 {
+  public function getTargetText($lang, $default = FALSE) {
+    if (is_string($lang)) {
+      $language = $this->Resource->Project->getLanguage($lang);
+      $languageId = $language->id;
+    } elseif (is_numeric($lang)) {
+      $languageId = $lang;
+    } elseif ($lang instanceof ProjectLanguage) {
+      $languageId = $lang->id;
+    }
 
+    foreach($this->Translations as $translation) {
+      if ($translation->language_id == $languageId) {
+        return $translation->target_text;
+      }
+    }
+    return $default;
+  }
 }

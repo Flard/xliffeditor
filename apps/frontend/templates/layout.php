@@ -21,6 +21,7 @@
                 <?php endif; ?>
           </h1>
         </div>
+        <?php include_slot('breadcrumbs'); ?>
         <div class="row">
 <?php if (has_slot('sidebar')): ?>
           <div class="span10">

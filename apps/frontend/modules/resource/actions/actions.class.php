@@ -26,5 +26,7 @@ class resourceActions extends sfActions
    $this->project = $this->resource->getProject();
    $this->langCode = $request->getParameter('lang');
    $this->language = $this->project->getLanguage($this->langCode);
+
+   $this->form = $form = new TranslateResourceForm($this->resource, $this->language);
   }
 }

@@ -7,3 +7,4 @@ function icon_tag($icon, $title = '') {
    'class' => 'icon'
   )).' ';
 }
+
