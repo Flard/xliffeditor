@@ -12,5 +12,20 @@
  */
 class ProjectLanguage extends BaseProjectLanguage
 {
+	public function hasIcon() {
+          return true;
+        }
 
+        public function getIconUrl() {
+          switch($this->lang) {
+            case 'en':
+              $lang = 'gb';
+              break;
+            default:
+              $lang = $this->lang;
+              break;
+          }
+    
+          return '/images/flags/'.$lang.'.png';
+        }
 }
