@@ -1,8 +1,43 @@
 Project:
   cms:
     name: Forwart CMS Backend
+    Languages:
+      cms_en:
+        name: English
+        lang: en
+      cms_nl:
+        name: Nederlands
+        lang: nl
   module_webshop:
     name: Forwart CMS Webshop module
+    Languages:
+      module_webshop_en:
+        name: English
+        lang: en
+      module_webshop_nl:
+        name: Nederlands
+        lang: nl
+      module_webshop_de:
+        name: Deutsch
+        lang: de
+    Resources:
+      resource_webshop_webshop:
+        name: Webshop Labels
+        filename: webshop.xml
+      resoure_webshop_checkout:
+        name: Checkout form labels
+        filename: checkout_form.xml
   module_webuser:
     name: Forwart CMS Webusers module
+    Languages:
+      module_webuser_en:
+        name: English
+        lang: en
+      module_webuser_nl:
+        name: Nederlands
+        lang: nl
+      module_webuser_de:
+        name: Deutsch
+        lang: de
+
   

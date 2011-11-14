@@ -12,5 +12,13 @@
  */
 class Resource extends BaseResource
 {
-
+	public function getProjectSlug() {
+		return $this->Project->slug;
+        }
+        public function getTotalLineCount() {
+		return 100;
+        }
+ 	public function getPercentageComplete() {
+		return 11;
+	}
 }

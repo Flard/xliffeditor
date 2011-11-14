@@ -16,11 +16,9 @@ project:
   param: { module: project, action: show }
   options: { type: object, model: Project }
 
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
-
-default:
-  url:   /:module/:action/*
+resource:
+  url:   /project/:projectSlug/resources/:filename
+  class: sfDoctrineRoute
+  param: { module: resource, action: show }
+  options: { type: object, model: Resource, segment_separators: ['/'] }
+  

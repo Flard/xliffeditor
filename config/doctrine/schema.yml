@@ -29,7 +29,7 @@ Resource:
     Project:
       local: project_id
       foreign: id
-      foreignAlias: Files
+      foreignAlias: Resources
 
 ResourceLine:
   columns:

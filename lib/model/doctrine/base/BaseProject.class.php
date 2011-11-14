@@ -9,18 +9,18 @@
  * @property string $name
  * @property string $token
  * @property Doctrine_Collection $Languages
- * @property Doctrine_Collection $Files
+ * @property Doctrine_Collection $Resources
  * 
  * @method integer             getId()        Returns the current record's "id" value
  * @method string              getName()      Returns the current record's "name" value
  * @method string              getToken()     Returns the current record's "token" value
  * @method Doctrine_Collection getLanguages() Returns the current record's "Languages" collection
- * @method Doctrine_Collection getFiles()     Returns the current record's "Files" collection
+ * @method Doctrine_Collection getResources() Returns the current record's "Resources" collection
  * @method Project             setId()        Sets the current record's "id" value
  * @method Project             setName()      Sets the current record's "name" value
  * @method Project             setToken()     Sets the current record's "token" value
  * @method Project             setLanguages() Sets the current record's "Languages" collection
- * @method Project             setFiles()     Sets the current record's "Files" collection
+ * @method Project             setResources() Sets the current record's "Resources" collection
  * 
  * @package    xliffeditor
  * @subpackage model
@@ -56,7 +56,7 @@ abstract class BaseProject extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'project_id'));
 
-        $this->hasMany('Resource as Files', array(
+        $this->hasMany('Resource as Resources', array(
              'local' => 'id',
              'foreign' => 'project_id'));
 
