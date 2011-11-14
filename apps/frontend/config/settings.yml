@@ -41,6 +41,7 @@ all:
       - Cache
       - I18N
       - Bootstrap
+      - Xliff
 
     enabled_modules:
       - default

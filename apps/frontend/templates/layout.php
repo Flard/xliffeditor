@@ -27,7 +27,6 @@
             <?php echo $sf_content; ?>
           </div>
           <div class="span4">
-            <h3>Secondary content</h3>
             <?php include_slot('sidebar'); ?>
           </div>
 <?php else: ?>
