@@ -17,24 +17,27 @@ project:
   options: { type: object, model: Project }
 
 resource:
-  url:   /project/:projectSlug/resources/:filename
+  url:   /projects/:projectSlug/resources/:filename
   class: sfDoctrineRoute
   param: { module: resource, action: show }
   options: { type: object, model: Resource, segment_separators: ['/'] }
 
 resource_add:
-  url:   /project/:slug/resources/add
+  url:   /projects/:slug/resources/add
   class: sfDoctrineRoute
   param: { module: resource, action:add }
   options: { type: object, model: Project }
 
 resource_download:
-  url:   /project/:projectSlug/download/:filename/:lang  
+  url:   /projects/:projectSlug/download/:filename/:lang
   class: sfDoctrineRoute
   param: { module: resource, action: download }
   options: { type: object, model: Resource, segment_separator: ['/'] }
+
 resource_translate:
-  url:   /project/:projectSlug/translate/:filename/:lang
+  url:   /projects/:projectSlug/translate/:filename/:lang
   class: sfDoctrineRoute
   param: { module: resource, action: translate }
   options: { type: object, model: Resource, segment_separators: ['/'] }
+  requirements:
+    sf_method: ['GET', 'POST']

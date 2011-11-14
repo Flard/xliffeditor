@@ -10,23 +10,32 @@
  */
 class resourceActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeShow(sfWebRequest $request)
-  {
-    $this->resource = $this->getRoute()->getObject();
-	$this->project = $this->resource->getProject();
-  }
+    /**
+     * Executes index action
+     *
+     * @param sfRequest $request A request object
+     */
+    public function executeShow(sfWebRequest $request)
+    {
+        $this->resource = $this->getRoute()->getObject();
+        $this->project = $this->resource->getProject();
+    }
 
-  public function executeTranslate(sfWebRequest $request) {
-   $this->resource = $this->getRoute()->getObject();
-   $this->project = $this->resource->getProject();
-   $this->langCode = $request->getParameter('lang');
-   $this->language = $this->project->getLanguage($this->langCode);
+    public function executeTranslate(sfWebRequest $request)
+    {
+        $this->resource = $this->getRoute()->getObject();
+        $this->project = $this->resource->getProject();
+        $this->langCode = $request->getParameter('lang');
+        $this->language = $this->project->getLanguage($this->langCode);
 
-   $this->form = $form = new TranslateResourceForm($this->resource, $this->language);
-  }
+        $this->form = $form = new TranslateResourceForm($this->resource, $this->language);
+
+        if ($request->isMethod('POST')) {
+            $form->bind($request->getParameter($form->getName()));
+
+            if ($form->isValid()) {
+                $form->save();
+            }
+        }
+    }
 }

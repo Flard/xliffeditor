@@ -28,23 +28,23 @@ Project:
           lws1:
             source_text: pager.first
             Translations:
-              - { Language: module_webshop_en, target_text: 'First' }
-              - { Language: module_webshop_nl, target_text: 'Eerste' }
+              lws11: { Language: module_webshop_en, target_text: 'First' }
+              lws12: { Language: module_webshop_nl, target_text: 'Eerste' }
           lws2:
             source_text: pager.first.title
             Translations:
-              - { Language: module_webshop_en, target_text: 'Go to first page' }
-              - { Language: module_webshop_nl, target_text: 'Ga naar eerste pagina' }
+              lws21: { Language: module_webshop_en, target_text: 'Go to first page' }
+              lws22: { Language: module_webshop_nl, target_text: 'Ga naar eerste pagina' }
           lws3:
             source_text: pager.previous
             Translations:
-              - { Language: module_webshop_en, target_text: 'Previous' }
-              - { Language: module_webshop_nl, target_text: 'Vorige' }
+              lws31: { Language: module_webshop_en, target_text: 'Previous' }
+              lws32: { Language: module_webshop_nl, target_text: 'Vorige' }
           lws4:
             source_text: pager.previous.title
             Translations:
-              - { Language: module_webshop_en, target_text: 'Go to previous page' }
-              - { Language: module_webshop_nl, target_text: 'Ga naar vorige pagina' }
+              lws41: { Language: module_webshop_en, target_text: 'Go to previous page' }
+              lws42: { Language: module_webshop_nl, target_text: 'Ga naar vorige pagina' }
       resoure_webshop_checkout:
         name: Checkout form labels
         filename: checkout_form.xml
