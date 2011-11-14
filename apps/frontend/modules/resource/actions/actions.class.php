@@ -20,4 +20,11 @@ class resourceActions extends sfActions
     $this->resource = $this->getRoute()->getObject();
 	$this->project = $this->resource->getProject();
   }
+
+  public function executeTranslate(sfWebRequest $request) {
+   $this->resource = $this->getRoute()->getObject();
+   $this->project = $this->resource->getProject();
+   $this->langCode = $request->getParameter('lang');
+   $this->language = $this->project->getLanguage($this->langCode);
+  }
 }

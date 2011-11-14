@@ -12,5 +12,24 @@
  */
 class Project extends BaseProject
 {
+  public function getFileCount() {
+    return $this->Resources->count();
+  }
 
+  public function getLanguageCount() {
+    return $this->Languages->count();
+  }
+
+  public function getPercentageComplete() {
+    return 11;
+  }
+
+  public function getLanguage($langCode) {
+    foreach($this->Languages as $language) {
+      if ($language->lang == $langCode) {
+        return $language;
+      }
+    }
+    return false;
+  }
 }

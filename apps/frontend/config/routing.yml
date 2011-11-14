@@ -22,3 +22,8 @@ resource:
   param: { module: resource, action: show }
   options: { type: object, model: Resource, segment_separators: ['/'] }
   
+resource_translate:
+  url:   /project/:projectSlug/resources/:filename/:lang
+  class: sfDoctrineRoute
+  param: { module: resource, action: translate }
+  options: { type: object, model: Resource, segment_separators: ['/'] }
