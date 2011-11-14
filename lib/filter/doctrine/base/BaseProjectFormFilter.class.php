@@ -15,11 +15,13 @@ abstract class BaseProjectFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'name'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'token' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'slug'  => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'name'  => new sfValidatorPass(array('required' => false)),
       'token' => new sfValidatorPass(array('required' => false)),
+      'slug'  => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('project_filters[%s]');
@@ -42,6 +44,7 @@ abstract class BaseProjectFormFilter extends BaseFormFilterDoctrine
       'id'    => 'Number',
       'name'  => 'Text',
       'token' => 'Text',
+      'slug'  => 'Text',
     );
   }
 }

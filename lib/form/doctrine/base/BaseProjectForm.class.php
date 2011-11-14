@@ -18,13 +18,19 @@ abstract class BaseProjectForm extends BaseFormDoctrine
       'id'    => new sfWidgetFormInputHidden(),
       'name'  => new sfWidgetFormInputText(),
       'token' => new sfWidgetFormInputText(),
+      'slug'  => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'id'    => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'name'  => new sfValidatorString(array('max_length' => 50)),
       'token' => new sfValidatorString(array('max_length' => 32)),
+      'slug'  => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorDoctrineUnique(array('model' => 'Project', 'column' => array('slug')))
+    );
 
     $this->widgetSchema->setNameFormat('project[%s]');
 

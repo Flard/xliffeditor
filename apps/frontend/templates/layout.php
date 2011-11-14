@@ -22,6 +22,7 @@
           </h1>
         </div>
         <div class="row">
+<?php if (has_slot('sidebar')): ?>
           <div class="span10">
             <?php echo $sf_content; ?>
           </div>
@@ -29,6 +30,11 @@
             <h3>Secondary content</h3>
             <?php include_slot('sidebar'); ?>
           </div>
+<?php else: ?>
+<div class="span14">
+<?php echo $sf_content; ?>
+</div>
+<?php endif; ?>
         </div>
       </div>
 

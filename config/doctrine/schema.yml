@@ -3,6 +3,9 @@ Project:
     id: { type: integer, primary: true, autoincrement: true }
     name: { type: string(50), notnull: true }
     token: { type: string(32), notnull: true }
+  actAs:
+    Sluggable:
+      fields: [name]
   
 ProjectLanguage:
   columns:

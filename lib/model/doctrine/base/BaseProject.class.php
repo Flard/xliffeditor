@@ -59,5 +59,13 @@ abstract class BaseProject extends sfDoctrineRecord
         $this->hasMany('Resource as Files', array(
              'local' => 'id',
              'foreign' => 'project_id'));
+
+        $sluggable0 = new Doctrine_Template_Sluggable(array(
+             'fields' => 
+             array(
+              0 => 'name',
+             ),
+             ));
+        $this->actAs($sluggable0);
     }
 }

@@ -6,6 +6,16 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+project_index:
+  url:   /projects
+  param: { module: project, action: index }
+
+project:
+  url:   /projects/:slug
+  class: sfDoctrineRoute
+  param: { module: project, action: show }
+  options: { type: object, model: Project }
+
 # generic rules
 # please, remove them by adding more specific rules
 default_index:

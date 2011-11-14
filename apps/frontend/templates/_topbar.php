@@ -10,7 +10,7 @@
             <?php
 
             if (!$sf_user->isAuthenticated()) {
-                include_component('sfGuardauth', 'topBarSignin');
+                include_component('sfGuardAuth', 'topBarSignin');
             } else {
                 include_component('sfGuardAuth', 'topBarProfile');
             }
