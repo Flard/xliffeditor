@@ -20,7 +20,7 @@
 <?php if (count($project->Resources) > 0): ?>
 <?php foreach($project->Resources as $resource): ?>
     <tr>
-      <td><?php echo link_to($resource->name, 'resource', $resource); ?></td>
+      <td><?php echo link_to(icon_tag('box').$resource->name, 'resource', $resource); ?></td>
       <td><?php echo $resource->getTotalLineCount(); ?></td>
       <td><?php echo $resource->getPercentagecomplete(); ?>%</td>
     </tr>

@@ -5,5 +5,5 @@ function icon_tag($icon, $title = '') {
    'width' => 16,
    'height' => 16,
    'class' => 'icon'
-  ));
+  )).' ';
 }
