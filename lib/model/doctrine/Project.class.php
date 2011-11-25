@@ -50,7 +50,7 @@ class Project extends BaseProject
 
         if ($linesToBeTranslated == 0) return 0;
 
-        return (100 / $linesToBeTranslated) * $linesToBeTranslated;
+        return (100 / $linesToBeTranslated) * $linesTranslated;
     }
 
     public function getLanguage($langCode)

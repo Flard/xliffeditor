@@ -28,4 +28,22 @@ class ProjectLanguage extends BaseProjectLanguage
     
           return '/images/flags/'.$lang.'.png';
         }
+
+	public function getTotalTranslatedLineCount() {
+ 		$q = ResourceLineTranslationTable::getInstance()->createQuery('rlt')
+			->select('COUNT(rlt.line_id)')
+			->addWhere('rlt.language_id = ?', $this->id)
+			->andWhere('rlt.line_id IN (SELECT rl.id FROM ResourceLine rl WHERE rl.resource_id IN (SELECT r.id FROM Resource r WHERE r.project_id = ?))', $this->project_id)
+			;
+		return $q->fetchOne(null, Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+        }
+
+	public function getPercentageComplete() {
+		$linesToTranslate = $this->Project->getTotalLineCount();
+		if ($linesToTranslate == 0) return 0;
+
+                $linesTranslated = $this->getTotalTranslatedLineCount();
+               
+               return (100 / $linesToTranslate) * $linesTranslated;
+        }
 }

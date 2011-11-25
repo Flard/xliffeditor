@@ -16,9 +16,22 @@ class Resource extends BaseResource
 		return $this->Project->slug;
         }
         public function getTotalLineCount() {
-		return 100;
+                $q = ResourceLineTable::getInstance()->createQuery('l')
+                          ->select('COUNT(l.id)')->where('l.resource_id = ?', $this->id);
+		return $q->fetchOne(null, Doctrine_Core::HYDRATE_SINGLE_SCALAR);
         }
+	public function getTranslatedLineCount() {
+		$q = ResourceLineTranslationTable::getInstance()->createQuery('lr')
+                           ->select('COUNT(lr.line_id)')->where('lr.line_id IN (SELECT l.id FROM ResourceLine l WHERE l.resource_id = ?)', $this->id);
+		return $q->fetchOne(null, Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+ 	}
  	public function getPercentageComplete() {
-		return 11;
+                $languageCount = $this->Project->getLanguageCount();
+		$linesToTranslate = $this->getTotalLineCount() * $languageCount;
+
+ 		if ($linesToTranslate == 0) return 0;
+		$linesTranslated = $this->getTranslatedLineCount();
+
+		return (100 / $linesToTranslate) * $linesTranslated;
 	}
 }

@@ -7,6 +7,21 @@
    array('route' => 'project', 'route_params' => $project, 'text' => $project->name)
    )); ?>
 
+<?php slot('sidebar'); ?>
+<h2><?php echo __('Languages'); ?></h2>
+<ul class="unstyled">
+<?php foreach ($project->Languages as $language): ?>
+  <li>
+    <?php if ($language->hasIcon()) echo image_tag($language->getIconUrl()); ?>
+    <?php echo $language->name; ?>
+    (<?php echo round($language->getPercentageComplete()); ?>%)
+  </li>
+<?php endforeach; ?>
+</ul>
+
+<p><button class="btn">Add Language</button></p>
+<?php end_slot(); ?>
+
 <h2><?php echo __('Resources'); ?></h2>
 <table class="zebra-striped">
   <thead>
@@ -22,7 +37,7 @@
     <tr>
       <td><?php echo link_to(icon_tag('box').$resource->name, 'resource', $resource); ?></td>
       <td><?php echo $resource->getTotalLineCount(); ?></td>
-      <td><?php echo $resource->getPercentagecomplete(); ?>%</td>
+      <td><?php echo round($resource->getPercentagecomplete()); ?>%</td>
     </tr>
 <?php endforeach; ?>
 <?php else: ?>
