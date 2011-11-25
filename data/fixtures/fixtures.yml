@@ -1,4 +1,17 @@
 Project:
+  xliffeditor:
+    name: XLIFF Editor
+    Languages:
+      xliff_en:
+        name: English
+        lang: en
+      xliff_nl:
+        name: Nederlands
+        lang: nl
+    Resources:
+      xliff_messages:
+        name: Labels
+        filename: messages.xml
   cms:
     name: Forwart CMS Backend
     Languages:
