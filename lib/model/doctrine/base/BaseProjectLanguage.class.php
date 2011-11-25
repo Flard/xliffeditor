@@ -10,20 +10,20 @@
  * @property string $name
  * @property string $lang
  * @property Project $Project
- * @property Doctrine_Collection $ResourceLineTranslations
+ * @property Doctrine_Collection $ResourceLineTranslation
  * 
- * @method integer             getId()                       Returns the current record's "id" value
- * @method integer             getProjectId()                Returns the current record's "project_id" value
- * @method string              getName()                     Returns the current record's "name" value
- * @method string              getLang()                     Returns the current record's "lang" value
- * @method Project             getProject()                  Returns the current record's "Project" value
- * @method Doctrine_Collection getResourceLineTranslations() Returns the current record's "ResourceLineTranslations" collection
- * @method ProjectLanguage     setId()                       Sets the current record's "id" value
- * @method ProjectLanguage     setProjectId()                Sets the current record's "project_id" value
- * @method ProjectLanguage     setName()                     Sets the current record's "name" value
- * @method ProjectLanguage     setLang()                     Sets the current record's "lang" value
- * @method ProjectLanguage     setProject()                  Sets the current record's "Project" value
- * @method ProjectLanguage     setResourceLineTranslations() Sets the current record's "ResourceLineTranslations" collection
+ * @method integer             getId()                      Returns the current record's "id" value
+ * @method integer             getProjectId()               Returns the current record's "project_id" value
+ * @method string              getName()                    Returns the current record's "name" value
+ * @method string              getLang()                    Returns the current record's "lang" value
+ * @method Project             getProject()                 Returns the current record's "Project" value
+ * @method Doctrine_Collection getResourceLineTranslation() Returns the current record's "ResourceLineTranslation" collection
+ * @method ProjectLanguage     setId()                      Sets the current record's "id" value
+ * @method ProjectLanguage     setProjectId()               Sets the current record's "project_id" value
+ * @method ProjectLanguage     setName()                    Sets the current record's "name" value
+ * @method ProjectLanguage     setLang()                    Sets the current record's "lang" value
+ * @method ProjectLanguage     setProject()                 Sets the current record's "Project" value
+ * @method ProjectLanguage     setResourceLineTranslation() Sets the current record's "ResourceLineTranslation" collection
  * 
  * @package    xliffeditor
  * @subpackage model
@@ -63,7 +63,7 @@ abstract class BaseProjectLanguage extends sfDoctrineRecord
              'local' => 'project_id',
              'foreign' => 'id'));
 
-        $this->hasMany('ResourceLineTranslations', array(
+        $this->hasMany('ResourceLineTranslation', array(
              'local' => 'id',
              'foreign' => 'language_id'));
     }

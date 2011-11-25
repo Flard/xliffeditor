@@ -1,14 +1,14 @@
 <?php
 
 /**
- * ResourceLineTranslations filter form base class.
+ * ResourceLineTranslation filter form base class.
  *
  * @package    xliffeditor
  * @subpackage filter
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
-abstract class BaseResourceLineTranslationsFormFilter extends BaseFormFilterDoctrine
+abstract class BaseResourceLineTranslationFormFilter extends BaseFormFilterDoctrine
 {
   public function setup()
   {
@@ -22,7 +22,7 @@ abstract class BaseResourceLineTranslationsFormFilter extends BaseFormFilterDoct
       'remarks'     => new sfValidatorPass(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('resource_line_translations_filters[%s]');
+    $this->widgetSchema->setNameFormat('resource_line_translation_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -33,7 +33,7 @@ abstract class BaseResourceLineTranslationsFormFilter extends BaseFormFilterDoct
 
   public function getModelName()
   {
-    return 'ResourceLineTranslations';
+    return 'ResourceLineTranslation';
   }
 
   public function getFields()

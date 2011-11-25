@@ -24,10 +24,33 @@ class Project extends BaseProject
         return $q->fetchOne(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
     }
 
+    protected function getTotalLineCount() {
+        $q = ResourceLineTable::getInstance()->createQuery('l')
+              ->select('COUNT(l.id)')
+              ->where('l.resource_id IN (SELECT r.id FROM Resource r WHERE r.project_id = ?)', $this->id);
+
+        return $q->fetchOne(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+    }
+
+    protected function getTotalTranslatedLineCount() {
+        $q = ResourceLineTranslationTable::getInstance()->createQuery('lt')
+              ->select('COUNT(lt.line_id)')
+              ->where('lt.line_id IN (SELECT l.id FROM ResourceLine l WHERE l.resource_id IN (SELECT r.id FROM Resource r WHERE r.project_id = ?))', $this->id);
+
+        return $q->fetchOne(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+    }
+
     public function getPercentageComplete()
     {
-        
-        return 0;
+        $totalLineCount = $this->getTotalLineCount();
+        $totalLanguages = $this->getLanguageCount();
+
+        $linesToBeTranslated = $totalLineCount * $totalLanguages;
+        $linesTranslated = $this->getTotalTranslatedLineCount();
+
+        if ($linesToBeTranslated == 0) return 0;
+
+        return (100 / $linesToBeTranslated) * $linesToBeTranslated;
     }
 
     public function getLanguage($langCode)

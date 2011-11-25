@@ -1,16 +1,16 @@
 <?php
 
 /**
- * ResourceLineTranslations form base class.
+ * ResourceLineTranslation form base class.
  *
- * @method ResourceLineTranslations getObject() Returns the current form's model object
+ * @method ResourceLineTranslation getObject() Returns the current form's model object
  *
  * @package    xliffeditor
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseResourceLineTranslationsForm extends BaseFormDoctrine
+abstract class BaseResourceLineTranslationForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -28,7 +28,7 @@ abstract class BaseResourceLineTranslationsForm extends BaseFormDoctrine
       'remarks'     => new sfValidatorString(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('resource_line_translations[%s]');
+    $this->widgetSchema->setNameFormat('resource_line_translation[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -39,7 +39,7 @@ abstract class BaseResourceLineTranslationsForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'ResourceLineTranslations';
+    return 'ResourceLineTranslation';
   }
 
 }

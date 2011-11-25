@@ -59,7 +59,7 @@ abstract class BaseResourceLine extends sfDoctrineRecord
              'local' => 'resource_id',
              'foreign' => 'id'));
 
-        $this->hasMany('ResourceLineTranslations as Translations', array(
+        $this->hasMany('ResourceLineTranslation as Translations', array(
              'local' => 'id',
              'foreign' => 'line_id'));
     }
