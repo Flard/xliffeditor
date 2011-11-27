@@ -17,7 +17,7 @@ project:
   options: { type: object, model: Project }
 
 resource:
-  url:   /projects/:projectSlug/resources/:filename
+  url:   /projects/:projectSlug/resources/:id
   class: sfDoctrineRoute
   param: { module: resource, action: show }
   options: { type: object, model: Resource, segment_separators: ['/'] }
@@ -29,7 +29,7 @@ resource_add:
   options: { type: object, model: Project }
 
 resource_download:
-  url:   /projects/:projectSlug/download/:filename/:lang
+  url:   /projects/:projectSlug/download/:id/:lang
   class: sfDoctrineRoute
   param: { module: resource, action: download }
   options: { type: object, model: Resource, segment_separator: ['/'] }

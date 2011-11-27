@@ -21,11 +21,24 @@ class resourceActions extends sfActions
         $this->project = $this->resource->getProject();
     }
 
-    public function executeUpdate(sfWebRequest $request) {
+    public function executeUpdate(sfWebRequest $request)
+    {
         $this->resource = $this->getRoute()->getObject();
         $this->project = $this->resource->getProject();
 
-	$this->form = $form = new ResourceForm($this->resource);
+        $this->form = $form = new ResourceForm($this->resource);
+    }
+
+    public function executeDownload(sfWebRequest $request)
+    {
+        $this->resource = $this->getRoute()->getObject();
+        $this->project = $this->resource->getProject();
+
+        $this->langCode = $request->getParameter('lang');
+        $this->language = $this->project->getLanguage($this->langCode);
+
+        $exporter = new XliffResourceFileExporter($this->resource);
+        return $exporter->exportToResponse($this->language, $this->getResponse());
     }
 
     public function executeTranslate(sfWebRequest $request)
@@ -45,4 +58,5 @@ class resourceActions extends sfActions
             }
         }
     }
+
 }

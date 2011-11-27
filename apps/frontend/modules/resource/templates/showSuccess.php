@@ -24,8 +24,8 @@
         <?php if ($language->hasIcon()) echo image_tag($language->getIconUrl()); ?>
 	<?php echo link_to($language->name, 'resource_translate', array('sf_subject' => $resource, 'lang' => $language->lang)); ?>
       </td>
-      <td>0</td>
-      <td>0</td>
+      <td><?php echo $resource->getTranslatedLineCount($language); ?></td>
+      <td><?php echo round($resource->getPercentageComplete($language)); ?>%</td>
       <td><a href="#" class="btn"><img src="/images/icons/drive-download.png"> <?php echo __('Download'); ?></a></td>
     </tr>
 <?php endforeach; ?>

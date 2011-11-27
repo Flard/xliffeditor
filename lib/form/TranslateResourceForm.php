@@ -35,10 +35,8 @@ class TranslateResourceForm extends sfForm
     public function save() {
 
         $values = $this->getValues();
-        
-        foreach($values as $line_id => $text) {
-            
-        }
+
+        $this->resource->setTranslations($this->language, $values);
 
     }
 
