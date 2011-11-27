@@ -20,7 +20,7 @@ resource:
   url:   /:sf_culture/projects/:projectSlug/resources/:catalogue
   class: sfDoctrineRoute
   param: { module: resource, action: show }
-  options: { type: object, model: Resource }
+  options: { type: object, model: Resource, method: 'retrieveForRouting' }
 
 resource_add:
   url:   /:sf_culture/projects/:slug/resources/add

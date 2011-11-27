@@ -1,0 +1,14 @@
+- Create Project
+
+[Project]
+- Add Language
+- Remove Language
+
+- Add Resource
+
+- New API Token
+- Delete Project
+
+[Resource]
+X Update Resource
+X Manage Resource

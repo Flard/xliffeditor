@@ -8,6 +8,11 @@
                                          array('route' => 'resource', 'route_params' => $resource, 'text' => $resource->name)
                                     )); ?>
 
+<?php if ($resource->base_resource_id !== null): ?>
+    <p><small><?php echo __('Based on resource: %resource% (%project%)', array('%resource%' => $resource->BaseResource->name, '%project%' => $resource->BaseResource->Project->name)); ?></small></p>
+<?php endif; ?>
+
+
 <?php if ($resource->Lines->count() == 0): ?>
 <div class="alert-message block-message warning">
     <a class="close" href="#">×</a>

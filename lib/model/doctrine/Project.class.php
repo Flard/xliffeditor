@@ -12,6 +12,12 @@
  */
 class Project extends BaseProject
 {
+    public function preSave($event) {
+        if (empty($this->token)) {
+            $this->token = sha1(rand().$this->name);
+        }
+    }
+
     public function getFileCount()
     {
         $q = ResourceTable::getInstance()->createQuery('r')->select('COUNT(r.id)')->where('r.project_id = ?', $this->id);

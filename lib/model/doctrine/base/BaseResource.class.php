@@ -10,8 +10,11 @@
  * @property string $name
  * @property string $catalogue
  * @property integer $base_language_id
+ * @property integer $base_resource_id
  * @property Project $Project
  * @property ProjectLanguage $BaseLanguage
+ * @property Resource $BaseResource
+ * @property Doctrine_Collection $Resource
  * @property Doctrine_Collection $Lines
  * 
  * @method integer             getId()               Returns the current record's "id" value
@@ -19,16 +22,22 @@
  * @method string              getName()             Returns the current record's "name" value
  * @method string              getCatalogue()        Returns the current record's "catalogue" value
  * @method integer             getBaseLanguageId()   Returns the current record's "base_language_id" value
+ * @method integer             getBaseResourceId()   Returns the current record's "base_resource_id" value
  * @method Project             getProject()          Returns the current record's "Project" value
  * @method ProjectLanguage     getBaseLanguage()     Returns the current record's "BaseLanguage" value
+ * @method Resource            getBaseResource()     Returns the current record's "BaseResource" value
+ * @method Doctrine_Collection getResource()         Returns the current record's "Resource" collection
  * @method Doctrine_Collection getLines()            Returns the current record's "Lines" collection
  * @method Resource            setId()               Sets the current record's "id" value
  * @method Resource            setProjectId()        Sets the current record's "project_id" value
  * @method Resource            setName()             Sets the current record's "name" value
  * @method Resource            setCatalogue()        Sets the current record's "catalogue" value
  * @method Resource            setBaseLanguageId()   Sets the current record's "base_language_id" value
+ * @method Resource            setBaseResourceId()   Sets the current record's "base_resource_id" value
  * @method Resource            setProject()          Sets the current record's "Project" value
  * @method Resource            setBaseLanguage()     Sets the current record's "BaseLanguage" value
+ * @method Resource            setBaseResource()     Sets the current record's "BaseResource" value
+ * @method Resource            setResource()         Sets the current record's "Resource" collection
  * @method Resource            setLines()            Sets the current record's "Lines" collection
  * 
  * @package    xliffeditor
@@ -63,6 +72,9 @@ abstract class BaseResource extends sfDoctrineRecord
         $this->hasColumn('base_language_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('base_resource_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -75,6 +87,14 @@ abstract class BaseResource extends sfDoctrineRecord
         $this->hasOne('ProjectLanguage as BaseLanguage', array(
              'local' => 'base_language_id',
              'foreign' => 'id'));
+
+        $this->hasOne('Resource as BaseResource', array(
+             'local' => 'base_resource_id',
+             'foreign' => 'id'));
+
+        $this->hasMany('Resource', array(
+             'local' => 'id',
+             'foreign' => 'base_resource_id'));
 
         $this->hasMany('ResourceLine as Lines', array(
              'local' => 'id',

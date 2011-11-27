@@ -26,6 +26,7 @@ Resource:
     name: { type: string(50), notnull: true }
     catalogue: { type: string(50), notnull: true }
     base_language_id: { type: integer }
+    base_resource_id: { type: integer }
   relations:
     Project:
       local: project_id
@@ -34,6 +35,10 @@ Resource:
     BaseLanguage:
       class: ProjectLanguage
       local: base_language_id
+      foreign: id
+    BaseResource:
+      class: Resource
+      local: base_resource_id
       foreign: id
 
 ResourceLine:

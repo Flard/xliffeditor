@@ -16,4 +16,14 @@ class ResourceTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Resource');
     }
+
+    public function retrieveForRouting($params) {
+        $q = $this->createQuery('r')
+                ->leftJoin('r.Project p')
+                ->where('r.catalogue = ?', $params['catalogue'])
+                ->addWhere('p.slug = ?', $params['projectSlug'])
+                ;
+
+        return $q->execute();
+    }
 }
