@@ -15,7 +15,7 @@
       <div class="content">
         <div class="page-header">
           <h1>
-		<?php include_slot('page_title', 'Page title'); ?>
+        		<?php include_slot('page_title', 'Page title'); ?>
                 <?php if (has_slot('page_sub_title')): ?>
                 <small><?php include_slot('page_sub_title'); ?></small>
                 <?php endif; ?>
@@ -39,7 +39,7 @@
       </div>
 
       <footer>
-        <p>&copy; Company 2011</p>
+        <p>&copy; Devvert.nl 2011</p>
       </footer>
 
     </div> <!-- /container -->

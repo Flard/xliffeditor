@@ -35,5 +35,5 @@
 
 <h3><?php echo __('Manage Resource'); ?></h3>
 <ul>
-   <li><a href="#" class="btn"><img src="/images/icons/drive-upload.png"><?php echo __('Upload updated resource'); ?></a></li>
+   <li><a href="<?php echo url_for('resource_update', $resource); ?>" class="btn"><img src="/images/icons/drive-upload.png"><?php echo __('Upload updated resource'); ?></a></li>
 </ul>

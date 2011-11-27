@@ -34,6 +34,12 @@ resource_download:
   param: { module: resource, action: download }
   options: { type: object, model: Resource, segment_separator: ['/'] }
 
+resource_update:
+  url:   /projects/:projectSlug/upload/:filename
+  class: sfDoctrineRoute
+  param: { module: resource, action: update }
+  options: { type: object, model: Resource, segment_separators: ['/'] }
+
 resource_translate:
   url:   /projects/:projectSlug/translate/:filename/:lang
   class: sfDoctrineRoute
