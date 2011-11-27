@@ -9,9 +9,9 @@
 <div class="project">
   <h2><?php echo link_to($project->name, 'project', $project); ?></h2>
   <p>
-    <?php echo icon_tag('documents-stack'); ?> <?php echo $project->getFileCount(); ?> Files
-    <?php echo icon_tag('language'); ?> <?php echo $project->getLanguageCount(); ?> Languages
-    <?php echo icon_tag('tick'); ?> <?php echo round($project->getPercentageComplete()); ?>% done
+    <?php echo icon_tag('documents-stack'); ?> <?php echo format_number_choice('[0]No files|[1]1 File|(1,+Inf]%count% Files', array('%count%' => $project->getFileCount()), $project->getFileCount()); ?>
+    <?php echo icon_tag('language'); ?> <?php echo format_number_choice('[0]No languages|[1]1 Language|(1,+Inf]%count% Languages', array('%count%' => $project->getLanguageCount()), $project->getLanguageCount()); ?>
+    <?php echo icon_tag('tick'); ?> <?php echo __('%percentage%% done', array('%percentage%' => round($project->getPercentageComplete()))); ?>
   </p>
 </div>
 <?php endforeach; ?>

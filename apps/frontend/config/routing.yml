@@ -3,7 +3,7 @@
 
 # default rules
 homepage:
-  url:   /:sf_culture
+  url:   /
   param: { module: project, action: index }
 
 project_index:
