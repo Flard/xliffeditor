@@ -59,7 +59,7 @@ class XliffResourceFileExporter extends BaseResourceFileExporter
 
     protected function getXmlDocument(ProjectLanguage $language)
     {
-        $catalogue = $this->resource->filename;
+        $catalogue = $this->resource->catalogue;
 
         $dom = $this->createDOMDocument($this->getTemplate($language->lang, $catalogue));
         // find the body element

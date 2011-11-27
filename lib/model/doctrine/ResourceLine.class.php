@@ -33,7 +33,6 @@ class ResourceLine extends BaseResourceLine
             $translation = new ResourceLineTranslation();
             $translation->language_id = $this->getLanguageId($lang);
             $translation->line_id = $this->id;
-            die('languageId = '.$lang.'  => '.$translation->language_id);
         }
 
         $translation->target_text = $targetText;

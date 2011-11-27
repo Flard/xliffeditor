@@ -11,7 +11,7 @@ Project:
     Resources:
       xliff_messages:
         name: Labels
-        filename: messages.xml
+        catalogue: messages
   cms:
     name: Forwart CMS Backend
     Languages:
@@ -36,7 +36,7 @@ Project:
     Resources:
       resource_webshop_webshop:
         name: Webshop Labels
-        filename: webshop.xml
+        catalogue: webshop
         Lines:
           lws1:
             source_text: pager.first
@@ -60,7 +60,7 @@ Project:
               lws42: { Language: module_webshop_nl, target_text: 'Ga naar vorige pagina' }
       resoure_webshop_checkout:
         name: Checkout form labels
-        filename: checkout_form.xml
+        catalogue: checkout_form
   module_webuser:
     name: Forwart CMS Webusers module
     Languages:

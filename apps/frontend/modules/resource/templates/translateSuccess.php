@@ -41,5 +41,5 @@
 <?php endforeach; ?>
 </ul>
 
-<p><?php echo link_to(icon_tag('drive-download').__('Download %filename%', array('%filename%' => '<strong>'.$resource->filename.'</strong>')), 'resource_download', array('sf_subject' => $resource, 'lang' => 'nl'), array('class'=>'btn')); ?></p>
+<p><?php echo link_to(icon_tag('drive-download').__('Download %filename%', array('%filename%' => '<strong>'.$resource->getFilename().'</strong>')), 'resource_download', array('sf_subject' => $resource, 'lang' => 'nl'), array('class'=>'btn')); ?></p>
 <?php end_slot(); ?>

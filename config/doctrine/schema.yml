@@ -24,7 +24,7 @@ Resource:
     id: { type: integer, primary: true, autoincrement: true }
     project_id: { type: integer, notnull: true }
     name: { type: string(50), notnull: true }
-    filename: { type: string(50), notnull: true }
+    catalogue: { type: string(50), notnull: true }
   relations:
     Project:
       local: project_id

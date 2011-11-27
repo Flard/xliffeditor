@@ -17,6 +17,10 @@ class Resource extends BaseResource
         return $this->Project->slug;
     }
 
+    public function getFilename($extension = 'xml') {
+        return $this->catalogue.'.'.$extension;
+    }
+
     public function getTotalLineCount()
     {
         $q = ResourceLineTable::getInstance()->createQuery('l')

@@ -18,14 +18,14 @@ abstract class BaseResourceForm extends BaseFormDoctrine
       'id'         => new sfWidgetFormInputHidden(),
       'project_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Project'), 'add_empty' => false)),
       'name'       => new sfWidgetFormInputText(),
-      'filename'   => new sfWidgetFormInputText(),
+      'catalogue'  => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'project_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Project'))),
       'name'       => new sfValidatorString(array('max_length' => 50)),
-      'filename'   => new sfValidatorString(array('max_length' => 50)),
+      'catalogue'  => new sfValidatorString(array('max_length' => 50)),
     ));
 
     $this->widgetSchema->setNameFormat('resource[%s]');

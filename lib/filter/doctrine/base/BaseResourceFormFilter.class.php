@@ -15,13 +15,13 @@ abstract class BaseResourceFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'project_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Project'), 'add_empty' => true)),
       'name'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'filename'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'catalogue'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
       'project_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Project'), 'column' => 'id')),
       'name'       => new sfValidatorPass(array('required' => false)),
-      'filename'   => new sfValidatorPass(array('required' => false)),
+      'catalogue'  => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('resource_filters[%s]');
@@ -44,7 +44,7 @@ abstract class BaseResourceFormFilter extends BaseFormFilterDoctrine
       'id'         => 'Number',
       'project_id' => 'ForeignKey',
       'name'       => 'Text',
-      'filename'   => 'Text',
+      'catalogue'  => 'Text',
     );
   }
 }

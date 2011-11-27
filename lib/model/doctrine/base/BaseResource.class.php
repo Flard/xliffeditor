@@ -8,20 +8,20 @@
  * @property integer $id
  * @property integer $project_id
  * @property string $name
- * @property string $filename
+ * @property string $catalogue
  * @property Project $Project
  * @property Doctrine_Collection $Lines
  * 
  * @method integer             getId()         Returns the current record's "id" value
  * @method integer             getProjectId()  Returns the current record's "project_id" value
  * @method string              getName()       Returns the current record's "name" value
- * @method string              getFilename()   Returns the current record's "filename" value
+ * @method string              getCatalogue()  Returns the current record's "catalogue" value
  * @method Project             getProject()    Returns the current record's "Project" value
  * @method Doctrine_Collection getLines()      Returns the current record's "Lines" collection
  * @method Resource            setId()         Sets the current record's "id" value
  * @method Resource            setProjectId()  Sets the current record's "project_id" value
  * @method Resource            setName()       Sets the current record's "name" value
- * @method Resource            setFilename()   Sets the current record's "filename" value
+ * @method Resource            setCatalogue()  Sets the current record's "catalogue" value
  * @method Resource            setProject()    Sets the current record's "Project" value
  * @method Resource            setLines()      Sets the current record's "Lines" collection
  * 
@@ -49,7 +49,7 @@ abstract class BaseResource extends sfDoctrineRecord
              'notnull' => true,
              'length' => 50,
              ));
-        $this->hasColumn('filename', 'string', 50, array(
+        $this->hasColumn('catalogue', 'string', 50, array(
              'type' => 'string',
              'notnull' => true,
              'length' => 50,
