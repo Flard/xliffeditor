@@ -109,6 +109,10 @@ class Resource extends BaseResource
         }
     }
 
+    /**
+     * @param $sourceText
+     * @return ResourceLine
+     */
     protected function findLineBySourceText($sourceText)
     {
         $lines = $this->getLines();
@@ -120,6 +124,10 @@ class Resource extends BaseResource
         return false;
     }
 
+    /**
+     * @param $lineId
+     * @return ResourceLine
+     */
     protected function findLineById($lineId)
     {
         $lines = $this->getLines();

@@ -34,10 +34,12 @@ class ResourceLine extends BaseResourceLine
             $translation->language_id = $this->getLanguageId($lang);
             $translation->line_id = $this->id;
         }
-
-        $translation->target_text = $targetText;
-        $translation->save();
-
+        if (empty($targetText)) {
+            $translation->delete();
+        } else {
+            $translation->target_text = $targetText;
+            $translation->save();
+        }
     }
 
     protected function getLanguageId($lang) {
