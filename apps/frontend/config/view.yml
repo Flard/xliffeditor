@@ -16,7 +16,11 @@ default:
     - http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css
     - main.css
 
-  javascripts:    []
+  javascripts:
+    - http://code.jquery.com/jquery-1.5.2.min.js
+    - http://twitter.github.com/bootstrap/1.4.0/bootstrap-alerts.js
+    - http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js
+    - http://twitter.github.com/bootstrap/1.4.0/bootstrap-dropdown.js
 
   has_layout:     true
   layout:         layout

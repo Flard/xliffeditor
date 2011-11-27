@@ -4,10 +4,10 @@
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: project, action: index }
 
 project_index:
-  url:   /projects
+  url:   /
   param: { module: project, action: index }
 
 project:
@@ -49,3 +49,13 @@ resource_translate:
   options: { type: object, model: Resource }
   requirements:
     sf_method: ['GET', 'POST']
+
+project_admin:
+  url:    /manage-projects
+
+api_admin:
+  url:    /manage-api
+
+profile:
+  url:   /profile
+  param: { module: profile, action: edit }

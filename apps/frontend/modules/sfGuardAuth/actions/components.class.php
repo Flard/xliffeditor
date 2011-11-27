@@ -27,4 +27,8 @@ class sfGuardAuthComponents extends BasesfGuardAuthComponents
     public function executeTopBarProfile() {
         
     }
+
+    public function executeTopBarProjects() {
+        $this->projects = $this->getUser()->getProjects();
+    }
 }
