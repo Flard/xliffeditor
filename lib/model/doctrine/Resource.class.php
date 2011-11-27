@@ -76,8 +76,10 @@ class Resource extends BaseResource
         $languageId = $language->id;
 
         foreach ($values as $lineId => $targetText) {
-            $line = $this->findLineById($lineId);
-            $line->setTranslation($languageId, $targetText);
+            if (!empty($targetText)) {
+                $line = $this->findLineById($lineId);
+                $line->setTranslation($languageId, $targetText);
+            }
         }
     }
 

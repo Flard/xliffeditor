@@ -3,47 +3,55 @@
 
 # default rules
 homepage:
-  url:   /
+  url:   /:sf_culture
   param: { module: project, action: index }
 
 project_index:
-  url:   /
+  url:   /:sf_culture
   param: { module: project, action: index }
 
 project:
-  url:   /projects/:slug
+  url:   /:sf_culture/projects/:slug
   class: sfDoctrineRoute
   param: { module: project, action: show }
   options: { type: object, model: Project }
 
 resource:
-  url:   /projects/:projectSlug/resources/:catalogue
+  url:   /:sf_culture/projects/:projectSlug/resources/:catalogue
   class: sfDoctrineRoute
   param: { module: resource, action: show }
   options: { type: object, model: Resource }
 
 resource_add:
-  url:   /projects/:slug/resources/add
+  url:   /:sf_culture/projects/:slug/resources/add
   class: sfDoctrineRoute
   param: { module: resource, action:add }
   options: { type: object, model: Project }
 
 resource_download:
-  url:   /projects/:projectSlug/download/:catalogue/:lang
+  url:   /:sf_culture/projects/:projectSlug/download/:catalogue/:lang
   class: sfDoctrineRoute
   param: { module: resource, action: download }
   options: { type: object, model: Resource }
 
 resource_update:
-  url:   /projects/:projectSlug/upload/:catalogue
+  url:   /:sf_culture/projects/:projectSlug/upload/:catalogue
   class: sfDoctrineRoute
   param: { module: resource, action: update }
   options: { type: object, model: Resource }
   requirements:
     sf_method: ['GET', 'POST', 'PUT']
 
+resource_admin:
+  url:   /:sf_culture/projects/:projectSlug/admin
+  class: sfDoctrineRoute
+  param: { module: resource, action: manage }
+  options: { type: object, model: Resource }
+  requirements:
+    sf_method: ['GET', 'POST', 'PUT']
+
 resource_translate:
-  url:   /projects/:projectSlug/translate/:catalogue/:lang
+  url:   /:sf_culture/projects/:projectSlug/translate/:catalogue/:lang
   class: sfDoctrineRoute
   param: { module: resource, action: translate }
   options: { type: object, model: Resource }
@@ -51,11 +59,11 @@ resource_translate:
     sf_method: ['GET', 'POST']
 
 project_admin:
-  url:    /manage-projects
+  url:    /:sf_culture/manage-projects
 
 api_admin:
-  url:    /manage-api
+  url:    /:sf_culture/manage-api
 
 profile:
-  url:   /profile
+  url:   /:sf_culture/profile
   param: { module: profile, action: edit }

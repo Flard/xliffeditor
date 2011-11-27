@@ -21,6 +21,23 @@ class resourceActions extends sfActions
         $this->project = $this->resource->getProject();
     }
 
+    public function executeManage(sfWebRequest $request)
+    {
+        $this->resource = $this->getRoute()->getObject();
+        $this->project = $this->resource->getProject();
+
+        $this->form = $form = new ResourceForm($this->resource);
+
+        if ($request->isMethod('POST')) {
+            $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+
+            if ($form->isValid()) {
+                $form->save();
+                $this->redirect('resource', $this->resource);
+            }
+        }
+    }
+
     public function executeUpdate(sfWebRequest $request)
     {
         $this->resource = $this->getRoute()->getObject();

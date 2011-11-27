@@ -1,7 +1,7 @@
 <?php slot('page_title', __('Projects')); ?>
 <?php echo dv_bootstrap_breadcrumbs(array(
-   array('route' => 'homepage', 'text' => 'Home'),
-   array('route' => 'project_index', 'text' => 'Projects')
+   array('route' => 'homepage', 'text' => __('Home')),
+   array('route' => 'project_index', 'text' => __('Projects'))
    )); ?>
 
 <div class="projectsList">

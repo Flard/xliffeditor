@@ -16,14 +16,14 @@ abstract class BaseResourceFormFilter extends BaseFormFilterDoctrine
       'project_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Project'), 'add_empty' => true)),
       'name'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'catalogue'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'base_language_id' => new sfWidgetFormFilterInput(),
+      'base_language_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('BaseLanguage'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'project_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Project'), 'column' => 'id')),
       'name'             => new sfValidatorPass(array('required' => false)),
       'catalogue'        => new sfValidatorPass(array('required' => false)),
-      'base_language_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'base_language_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('BaseLanguage'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('resource_filters[%s]');
@@ -47,7 +47,7 @@ abstract class BaseResourceFormFilter extends BaseFormFilterDoctrine
       'project_id'       => 'ForeignKey',
       'name'             => 'Text',
       'catalogue'        => 'Text',
-      'base_language_id' => 'Number',
+      'base_language_id' => 'ForeignKey',
     );
   }
 }

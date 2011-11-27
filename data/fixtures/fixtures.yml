@@ -12,7 +12,7 @@ Project:
       xliff_messages:
         name: Labels
         catalogue: messages
-        #BaseLanguage: xliff_en
+        BaseLanguage: xliff_en
   cms:
     name: Forwart CMS Backend
     Languages:

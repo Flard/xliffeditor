@@ -12,9 +12,26 @@ sfGuardGroup:
   Group_admin:
     name:           admin
     description:    Administrator group
-    Permissions:    [Permission_admin]
+    Permissions:
+      - perm_project_admin
+      - perm_user_admin
+      - perm_group_admin
+      - perm_permission_admin
+      - perm_api_admin
 
 sfGuardPermission:
-  Permission_admin:
-    name:           admin
-    description:    Administrator permission
+  perm_project_admin:
+    name:           PROJECT_ADMIN
+    description:    Manage projects
+  perm_user_admin:
+    name:           USER_ADMIN
+    description:    Manage users
+  perm_group_admin:
+    name:           GROUP_ADMIN
+    description:    Manage groups
+  perm_permission_admin:
+    name:           PERMISSION_ADMIN
+    description:    Manage permissions
+  perm_api_admin:
+    name:           API_ADMIN
+    description:    Manage API

@@ -11,6 +11,7 @@
  * @property string $catalogue
  * @property integer $base_language_id
  * @property Project $Project
+ * @property ProjectLanguage $BaseLanguage
  * @property Doctrine_Collection $Lines
  * 
  * @method integer             getId()               Returns the current record's "id" value
@@ -19,6 +20,7 @@
  * @method string              getCatalogue()        Returns the current record's "catalogue" value
  * @method integer             getBaseLanguageId()   Returns the current record's "base_language_id" value
  * @method Project             getProject()          Returns the current record's "Project" value
+ * @method ProjectLanguage     getBaseLanguage()     Returns the current record's "BaseLanguage" value
  * @method Doctrine_Collection getLines()            Returns the current record's "Lines" collection
  * @method Resource            setId()               Sets the current record's "id" value
  * @method Resource            setProjectId()        Sets the current record's "project_id" value
@@ -26,6 +28,7 @@
  * @method Resource            setCatalogue()        Sets the current record's "catalogue" value
  * @method Resource            setBaseLanguageId()   Sets the current record's "base_language_id" value
  * @method Resource            setProject()          Sets the current record's "Project" value
+ * @method Resource            setBaseLanguage()     Sets the current record's "BaseLanguage" value
  * @method Resource            setLines()            Sets the current record's "Lines" collection
  * 
  * @package    xliffeditor
@@ -67,6 +70,10 @@ abstract class BaseResource extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Project', array(
              'local' => 'project_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('ProjectLanguage as BaseLanguage', array(
+             'local' => 'base_language_id',
              'foreign' => 'id'));
 
         $this->hasMany('ResourceLine as Lines', array(

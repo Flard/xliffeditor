@@ -32,6 +32,7 @@ Resource:
       foreign: id
       foreignAlias: Resources
     BaseLanguage:
+      class: ProjectLanguage
       local: base_language_id
       foreign: id
 

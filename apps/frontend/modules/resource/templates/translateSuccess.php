@@ -3,8 +3,8 @@
 
 <?php slot('breadcrumbs'); ?>
 <?php echo dv_bootstrap_breadcrumbs(array(
-   array('route' => 'homepage', 'text' => 'Home'),
-   array('route' => 'project_index', 'text' => 'Projects'),
+   array('route' => 'homepage', 'text' => __('Home')),
+   array('route' => 'project_index', 'text' => __('Projects')),
    array('route' => 'project', 'route_params' => $project, 'text' => $project->name),
    array('route' => 'resource', 'route_params' => $resource, 'text' => $resource->name),
    array('route' => 'resource_translate', 'route_params' => array('sf_subject' => $resource, 'lang' => $langCode), 'text' => $language->name)

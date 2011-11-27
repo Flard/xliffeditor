@@ -10,6 +10,7 @@
  * @property string $name
  * @property string $lang
  * @property Project $Project
+ * @property Doctrine_Collection $Resource
  * @property Doctrine_Collection $ResourceLineTranslation
  * 
  * @method integer             getId()                      Returns the current record's "id" value
@@ -17,12 +18,14 @@
  * @method string              getName()                    Returns the current record's "name" value
  * @method string              getLang()                    Returns the current record's "lang" value
  * @method Project             getProject()                 Returns the current record's "Project" value
+ * @method Doctrine_Collection getResource()                Returns the current record's "Resource" collection
  * @method Doctrine_Collection getResourceLineTranslation() Returns the current record's "ResourceLineTranslation" collection
  * @method ProjectLanguage     setId()                      Sets the current record's "id" value
  * @method ProjectLanguage     setProjectId()               Sets the current record's "project_id" value
  * @method ProjectLanguage     setName()                    Sets the current record's "name" value
  * @method ProjectLanguage     setLang()                    Sets the current record's "lang" value
  * @method ProjectLanguage     setProject()                 Sets the current record's "Project" value
+ * @method ProjectLanguage     setResource()                Sets the current record's "Resource" collection
  * @method ProjectLanguage     setResourceLineTranslation() Sets the current record's "ResourceLineTranslation" collection
  * 
  * @package    xliffeditor
@@ -62,6 +65,10 @@ abstract class BaseProjectLanguage extends sfDoctrineRecord
         $this->hasOne('Project', array(
              'local' => 'project_id',
              'foreign' => 'id'));
+
+        $this->hasMany('Resource', array(
+             'local' => 'id',
+             'foreign' => 'base_language_id'));
 
         $this->hasMany('ResourceLineTranslation', array(
              'local' => 'id',

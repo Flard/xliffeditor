@@ -2,8 +2,8 @@
 <?php slot('page_sub_title', __('Project Overview')); ?>
 
 <?php echo dv_bootstrap_breadcrumbs(array(
-   array('route' => 'homepage', 'text' => 'Home'),
-   array('route' => 'project_index', 'text' => 'Projects'),
+   array('route' => 'homepage', 'text' => __('Home')),
+   array('route' => 'project_index', 'text' => __('Projects')),
    array('route' => 'project', 'route_params' => $project, 'text' => $project->name)
    )); ?>
 

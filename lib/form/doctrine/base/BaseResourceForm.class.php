@@ -19,7 +19,7 @@ abstract class BaseResourceForm extends BaseFormDoctrine
       'project_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Project'), 'add_empty' => false)),
       'name'             => new sfWidgetFormInputText(),
       'catalogue'        => new sfWidgetFormInputText(),
-      'base_language_id' => new sfWidgetFormInputText(),
+      'base_language_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('BaseLanguage'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -27,7 +27,7 @@ abstract class BaseResourceForm extends BaseFormDoctrine
       'project_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Project'))),
       'name'             => new sfValidatorString(array('max_length' => 50)),
       'catalogue'        => new sfValidatorString(array('max_length' => 50)),
-      'base_language_id' => new sfValidatorInteger(array('required' => false)),
+      'base_language_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('BaseLanguage'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('resource[%s]');

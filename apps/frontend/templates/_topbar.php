@@ -11,11 +11,11 @@
 
                         <?php
                             $items = array();
-                            if ($sf_user->isSuperAdmin() || $sf_user->hasPermission('PROJECT_ADMIN')) $items[] = link_to(__('Projects'), 'project_admin');
-                            if ($sf_user->isSuperAdmin() || $sf_user->hasPermission('USER_ADMIN')) $items[] = link_to(__('Users'), 'sf_guard_user');
-                            if ($sf_user->isSuperAdmin() || $sf_user->hasPermission('GROUP_ADMIN')) $items[] = link_to(__('Groups'), 'sf_guard_group');
-                            if ($sf_user->isSuperAdmin() || $sf_user->hasPermission('PERMISSION_ADMIN')) $items[] = link_to(__('Permissions'), 'sf_guard_permission');
-                            if ($sf_user->isSuperAdmin() || $sf_user->hasPermission('API_ADMIN')) $items[] = link_to(__('API'), 'api_admin');
+                            if ($sf_user->hasPermission('PROJECT_ADMIN')) $items[] = link_to(__('Projects'), 'project_admin');
+                            if ($sf_user->hasPermission('USER_ADMIN')) $items[] = link_to(__('Users'), 'sf_guard_user');
+                            if ($sf_user->hasPermission('GROUP_ADMIN')) $items[] = link_to(__('Groups'), 'sf_guard_group');
+                            if ($sf_user->hasPermission('PERMISSION_ADMIN')) $items[] = link_to(__('Permissions'), 'sf_guard_permission');
+                            if ($sf_user->hasPermission('API_ADMIN')) $items[] = link_to(__('API'), 'api_admin');
                             if (count($items) > 0):
                         ?>
                                 <li data-dropdown="dropdown">
