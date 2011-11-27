@@ -17,8 +17,9 @@ class Resource extends BaseResource
         return $this->Project->slug;
     }
 
-    public function getFilename($extension = 'xml') {
-        return $this->catalogue.'.'.$extension;
+    public function getFilename($extension = 'xml')
+    {
+        return $this->catalogue . '.' . $extension;
     }
 
     public function getTotalLineCount()
@@ -41,15 +42,40 @@ class Resource extends BaseResource
 
     public function getPercentageComplete($language = null)
     {
-        $linesToTranslate = $this->getTotalLineCount();
+        if ($language !== null) {
+            // Get resource total lines to translate
+            $linesToTranslate = $this->getTotalLineCount();
 
-        if ($language === null) {
+        } elseif ($this->base_language_id === null) {
+
+            // Get lines to translate
             $languageCount = $this->Project->getLanguageCount();
-            $linesToTranslate = $linesToTranslate * $languageCount;
+            $linesToTranslate = $this->getTotalLineCount() * $languageCount;
+
+        } else {
+
+            $languageCount = $this->Project->getLanguageCount();
+            $languageCount -= 1;
+            $linesToTranslate = $this->getTotalLineCount() * $languageCount;
+
         }
 
         if ($linesToTranslate == 0) return 0;
-        $linesTranslated = $this->getTranslatedLineCount($language);
+
+        if ($language !== null) {
+
+            $linesTranslated = $this->getTranslatedLineCount($language);
+
+        } elseif ($this->base_language_id !== null) {
+
+            $baseLinesTranslated = $this->getTranslatedLineCount($this->BaseLanguage);
+            $linesTranslated = $this->getTranslatedLineCount($language) - $baseLinesTranslated;
+
+        } else {
+
+            $linesTranslated = $this->getTranslatedLineCount(null);
+
+        }
 
         return (100 / $linesToTranslate) * $linesTranslated;
     }

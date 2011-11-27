@@ -42,8 +42,12 @@
                 <span class="label"><?php echo __('Base'); ?></span>
             <?php endif; ?>
         </td>
-        <td><?php echo $resource->getTranslatedLineCount($language); ?></td>
-        <td><?php echo round($resource->getPercentageComplete($language)); ?>%</td>
+        <td>
+            <?php echo $resource->getTranslatedLineCount($language); ?>
+        </td>
+        <td>
+            <?php echo round($resource->getPercentageComplete($language)); ?>%
+        </td>
         <?php if ($resource->Lines->count() > 0): ?>
         <td><a href="<?php echo url_for('resource_download', array('sf_subject' => $resource, 'lang' => $language->lang)); ?>" class="btn"><img src="/images/icons/drive-download.png"> <?php echo __('Download'); ?></a></td>
         <?php else: ?>

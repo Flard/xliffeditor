@@ -42,15 +42,24 @@ class Project extends BaseProject
 
     public function getPercentageComplete()
     {
-        $totalLineCount = $this->getTotalLineCount();
-        $totalLanguages = $this->getLanguageCount();
+        if ($this->Resources->count() == 0) {
+            return 0;
+        }
+        $total = 0;
+        foreach($this->Resources as $resource) {
+            $total += $resource->getPercentageComplete();
+        }
 
-        $linesToBeTranslated = $totalLineCount * $totalLanguages;
-        $linesTranslated = $this->getTotalTranslatedLineCount();
-
-        if ($linesToBeTranslated == 0) return 0;
-
-        return (100 / $linesToBeTranslated) * $linesTranslated;
+        return $total / $this->Resources->count();
+//        $totalLineCount = $this->getTotalLineCount();
+//        $totalLanguages = $this->getLanguageCount();
+//
+//        $linesToBeTranslated = $totalLineCount * $totalLanguages;
+//        $linesTranslated = $this->getTotalTranslatedLineCount();
+//
+//        if ($linesToBeTranslated == 0) return 0;
+//
+//        return (100 / $linesToBeTranslated) * $linesTranslated;
     }
 
     public function getLanguage($langCode)
