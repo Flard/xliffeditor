@@ -13,15 +13,17 @@ abstract class BaseResourceFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'project_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Project'), 'add_empty' => true)),
-      'name'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'catalogue'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'project_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Project'), 'add_empty' => true)),
+      'name'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'catalogue'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'base_language_id' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'project_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Project'), 'column' => 'id')),
-      'name'       => new sfValidatorPass(array('required' => false)),
-      'catalogue'  => new sfValidatorPass(array('required' => false)),
+      'project_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Project'), 'column' => 'id')),
+      'name'             => new sfValidatorPass(array('required' => false)),
+      'catalogue'        => new sfValidatorPass(array('required' => false)),
+      'base_language_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('resource_filters[%s]');
@@ -41,10 +43,11 @@ abstract class BaseResourceFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'         => 'Number',
-      'project_id' => 'ForeignKey',
-      'name'       => 'Text',
-      'catalogue'  => 'Text',
+      'id'               => 'Number',
+      'project_id'       => 'ForeignKey',
+      'name'             => 'Text',
+      'catalogue'        => 'Text',
+      'base_language_id' => 'Number',
     );
   }
 }

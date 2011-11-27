@@ -25,11 +25,15 @@ Resource:
     project_id: { type: integer, notnull: true }
     name: { type: string(50), notnull: true }
     catalogue: { type: string(50), notnull: true }
+    base_language_id: { type: integer }
   relations:
     Project:
       local: project_id
       foreign: id
       foreignAlias: Resources
+    BaseLanguage:
+      local: base_language_id
+      foreign: id
 
 ResourceLine:
   columns:

@@ -39,6 +39,8 @@ resource_update:
   class: sfDoctrineRoute
   param: { module: resource, action: update }
   options: { type: object, model: Resource }
+  requirements:
+    sf_method: ['GET', 'POST', 'PUT']
 
 resource_translate:
   url:   /projects/:projectSlug/translate/:catalogue/:lang

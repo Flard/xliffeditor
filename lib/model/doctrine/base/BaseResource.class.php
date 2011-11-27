@@ -9,21 +9,24 @@
  * @property integer $project_id
  * @property string $name
  * @property string $catalogue
+ * @property integer $base_language_id
  * @property Project $Project
  * @property Doctrine_Collection $Lines
  * 
- * @method integer             getId()         Returns the current record's "id" value
- * @method integer             getProjectId()  Returns the current record's "project_id" value
- * @method string              getName()       Returns the current record's "name" value
- * @method string              getCatalogue()  Returns the current record's "catalogue" value
- * @method Project             getProject()    Returns the current record's "Project" value
- * @method Doctrine_Collection getLines()      Returns the current record's "Lines" collection
- * @method Resource            setId()         Sets the current record's "id" value
- * @method Resource            setProjectId()  Sets the current record's "project_id" value
- * @method Resource            setName()       Sets the current record's "name" value
- * @method Resource            setCatalogue()  Sets the current record's "catalogue" value
- * @method Resource            setProject()    Sets the current record's "Project" value
- * @method Resource            setLines()      Sets the current record's "Lines" collection
+ * @method integer             getId()               Returns the current record's "id" value
+ * @method integer             getProjectId()        Returns the current record's "project_id" value
+ * @method string              getName()             Returns the current record's "name" value
+ * @method string              getCatalogue()        Returns the current record's "catalogue" value
+ * @method integer             getBaseLanguageId()   Returns the current record's "base_language_id" value
+ * @method Project             getProject()          Returns the current record's "Project" value
+ * @method Doctrine_Collection getLines()            Returns the current record's "Lines" collection
+ * @method Resource            setId()               Sets the current record's "id" value
+ * @method Resource            setProjectId()        Sets the current record's "project_id" value
+ * @method Resource            setName()             Sets the current record's "name" value
+ * @method Resource            setCatalogue()        Sets the current record's "catalogue" value
+ * @method Resource            setBaseLanguageId()   Sets the current record's "base_language_id" value
+ * @method Resource            setProject()          Sets the current record's "Project" value
+ * @method Resource            setLines()            Sets the current record's "Lines" collection
  * 
  * @package    xliffeditor
  * @subpackage model
@@ -53,6 +56,9 @@ abstract class BaseResource extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 50,
+             ));
+        $this->hasColumn('base_language_id', 'integer', null, array(
+             'type' => 'integer',
              ));
     }
 

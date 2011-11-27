@@ -26,7 +26,16 @@ class resourceActions extends sfActions
         $this->resource = $this->getRoute()->getObject();
         $this->project = $this->resource->getProject();
 
-        $this->form = $form = new ResourceForm($this->resource);
+        $this->form = $form = new UploadResourceForm($this->resource);
+
+        if ($request->isMethod('PUT')) {
+            $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+
+            if ($form->isValid()) {
+                $form->save();
+                $this->redirect('resource', $this->resource);
+            }
+        }
     }
 
     public function executeDownload(sfWebRequest $request)

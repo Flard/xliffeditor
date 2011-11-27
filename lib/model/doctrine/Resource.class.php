@@ -85,7 +85,7 @@ class Resource extends BaseResource
     {
         $lines = $this->getLines();
         foreach ($lines as $line) {
-            if ($line->source_Text == $sourceText) {
+            if ($line->source_text == $sourceText) {
                 return $line;
             }
         }

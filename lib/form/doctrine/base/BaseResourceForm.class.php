@@ -15,17 +15,19 @@ abstract class BaseResourceForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'         => new sfWidgetFormInputHidden(),
-      'project_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Project'), 'add_empty' => false)),
-      'name'       => new sfWidgetFormInputText(),
-      'catalogue'  => new sfWidgetFormInputText(),
+      'id'               => new sfWidgetFormInputHidden(),
+      'project_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Project'), 'add_empty' => false)),
+      'name'             => new sfWidgetFormInputText(),
+      'catalogue'        => new sfWidgetFormInputText(),
+      'base_language_id' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
-      'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'project_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Project'))),
-      'name'       => new sfValidatorString(array('max_length' => 50)),
-      'catalogue'  => new sfValidatorString(array('max_length' => 50)),
+      'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'project_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Project'))),
+      'name'             => new sfValidatorString(array('max_length' => 50)),
+      'catalogue'        => new sfValidatorString(array('max_length' => 50)),
+      'base_language_id' => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('resource[%s]');
