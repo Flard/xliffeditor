@@ -23,5 +23,24 @@ class projectActions extends sfActions
 
   public function executeShow(sfWebRequest $request) {
     $this->project = $this->getRoute()->getObject();
+    $this->forward404Unless($this->project, 'Project not found');
+  }
+  
+  public function executeAddLanguage(sfWebRequest $request) {
+    $this->project = $this->getRoute()->getObject();
+    $this->forward404Unless($this->project, 'Project not found');
+    
+    $lang = new ProjectLanguage();
+    $lang->Project = $this->project;
+    
+    $this->form = $form = new ProjectLanguageForm($lang);
+    
+    if ($request->isMethod('POST')) {
+        $form->bind($request->getParameter($form->getName()));
+        if ($form->isValid()) {
+            $form->save();
+            $this->redirect('project', $this->project);
+        }
+    }
   }
 }

@@ -12,3 +12,10 @@
 [Resource]
 X Update Resource
 X Manage Resource
+
+[Base Resource]
+
+
+[API]
+- Upload
+- Download

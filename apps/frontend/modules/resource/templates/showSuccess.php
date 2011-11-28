@@ -8,12 +8,14 @@
                                          array('route' => 'resource', 'route_params' => $resource, 'text' => $resource->name)
                                     )); ?>
 
-<?php if ($resource->base_resource_id !== null): ?>
-    <p><small><?php echo __('Based on resource: %resource% (%project%)', array('%resource%' => $resource->BaseResource->name, '%project%' => $resource->BaseResource->Project->name)); ?></small></p>
+<?php if ($hasParentResource): ?>
+    <p><small><?php echo __('Based on resource: %resource% (%project%)', array(
+            '%resource%' => link_to($resource->BaseResource->name, 'resource', $resource->BaseResource), 
+            '%project%' => link_to($resource->BaseResource->Project->name, 'project', $resource->BaseResource->Project))); ?></small></p>
 <?php endif; ?>
 
 
-<?php if ($resource->Lines->count() == 0): ?>
+<?php if ($showEmptyWarning): ?>
 <div class="alert-message block-message warning">
     <a class="close" href="#">×</a>
 
@@ -42,7 +44,7 @@
     <tr>
         <td>
             <?php if ($language->hasIcon()) echo image_tag($language->getIconUrl()); ?>
-            <?php echo link_to_if($resource->Lines->count() > 0, $language->name, 'resource_translate', array('sf_subject' => $resource, 'lang' => $language->lang)); ?>
+            <?php echo link_to_if($canTranslate, $language->name, 'resource_translate', array('sf_subject' => $resource, 'lang' => $language->lang)); ?>
             <?php if ($language->id == $resource->base_language_id): ?>
                 <span class="label"><?php echo __('Base'); ?></span>
             <?php endif; ?>
@@ -53,7 +55,7 @@
         <td>
             <?php echo round($resource->getPercentageComplete($language)); ?>%
         </td>
-        <?php if ($resource->Lines->count() > 0): ?>
+        <?php if ($canDownload): ?>
         <td><a href="<?php echo url_for('resource_download', array('sf_subject' => $resource, 'lang' => $language->lang)); ?>" class="btn"><img src="/images/icons/drive-download.png"> <?php echo __('Download'); ?></a></td>
         <?php else: ?>
         <td><a href="#" class="btn disabled"><img src="/images/icons/drive-download.png"> <?php echo __('Download'); ?></a></td>
@@ -65,11 +67,11 @@
 
 
 <h3><?php echo __('Manage Resource'); ?></h3>
-<ul class="actions">
+<div class="actions">
     <a href="<?php echo url_for('resource_update', $resource); ?>" class="btn"><img
             src="/images/icons/drive-upload.png"><?php echo __('Update resource'); ?></a>
     <?php if ($sf_user->hasPermission('PROJECT_ADMIN')): ?>
     <a href="<?php echo url_for('resource_admin', $resource); ?>" class="btn"><?php echo __('Manage resource'); ?></a>
 
     <?php endif; ?>
-</ul>
+</div>

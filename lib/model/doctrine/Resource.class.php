@@ -21,12 +21,25 @@ class Resource extends BaseResource
     {
         return $this->catalogue . '.' . $extension;
     }
-
+    
+    public function getNameWithProjectName() {
+        return "{$this->name} ({$this->Project->name})";
+    }
+    
     public function getTotalLineCount()
     {
-        $q = ResourceLineTable::getInstance()->createQuery('l')
+        if ($this->base_resource_id === null) {
+            $q = ResourceLineTable::getInstance()->createQuery('l')
                 ->select('COUNT(l.id)')->where('l.resource_id = ?', $this->id);
+        } else {
+            $q = ResourceLineTable::getInstance()->createQuery('l')
+                ->select('COUNT(l.id)')
+                ->where('l.resource_id = ?', $this->id)
+                ->orWhere('l.resource_id = ?', $this->base_resource_id);
+        }
+        
         return $q->fetchOne(null, Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+        
     }
 
     public function getTranslatedLineCount($language = null)

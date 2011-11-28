@@ -20,7 +20,7 @@
 </ul>
 
 <p>
-    <button class="btn">Add Language</button>
+    <a href="<?php echo url_for('language_add', $project); ?>" class="btn">Add Language</a>
 </p>
 
 <h2><?php echo __('API'); ?></h2>

@@ -12,5 +12,15 @@ class ProjectLanguageForm extends BaseProjectLanguageForm
 {
   public function configure()
   {
+      $this->useFields(array('name', 'lang'));
+      
+      //$this->widgetSchema['lang'] = new sfWidgetFormI18nChoiceLanguage();
+      
+      $this->widgetSchema->setLabels(array(
+          'name' => 'Display name',
+          'lang' => 'Language code'
+          ));
+          
+      $this->widgetSchema->setHelp('lang', 'Enter the two-character language code');
   }
 }

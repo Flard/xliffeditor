@@ -16,17 +16,27 @@ project:
   param: { module: project, action: show }
   options: { type: object, model: Project }
 
+language_add:
+  url:   /:sf_culture/projects/:slug/add-language
+  class: sfDoctrineRoute
+  param: { module: project, action:addLanguage }
+  options: { type: object, model: Project }
+  requirements:
+    sf_method: ['GET', 'POST', 'PUT']
+
+resource_add:
+  url:   /:sf_culture/projects/:slug/add-resource
+  class: sfDoctrineRoute
+  param: { module: resource, action:add }
+  options: { type: object, model: Project }
+  requirements:
+    sf_method: ['GET', 'POST', 'PUT']
+
 resource:
   url:   /:sf_culture/projects/:projectSlug/resources/:catalogue
   class: sfDoctrineRoute
   param: { module: resource, action: show }
   options: { type: object, model: Resource, method: 'retrieveForRouting' }
-
-resource_add:
-  url:   /:sf_culture/projects/:slug/resources/add
-  class: sfDoctrineRoute
-  param: { module: resource, action:add }
-  options: { type: object, model: Project }
 
 resource_download:
   url:   /:sf_culture/projects/:projectSlug/download/:catalogue/:lang
