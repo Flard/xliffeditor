@@ -4,3 +4,6 @@
 # default values
 all:
   title: XLIFF Editor
+
+  bootstrap:
+    page_title_slot: page_title
