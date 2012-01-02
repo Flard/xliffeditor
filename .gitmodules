@@ -1,3 +1,7 @@
 [submodule "lib/vendor/symfony"]
 	path = lib/vendor/symfony
 	url = https://github.com/symfony/symfony1
+
+[submodule "plugins/dvTwitterBootstrapPlugin"]
+	path = plugins/dvTwitterBootstrapPlugin
+	url = git@github.com:Flard/dvTwitterBootstrapPlugin.git
