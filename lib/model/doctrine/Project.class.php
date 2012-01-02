@@ -77,4 +77,14 @@ class Project extends BaseProject
         }
         return false;
     }
+
+    public function getResource($catalogue) {
+        foreach($this->Resources as $resource) {
+            if ($resource->catalogue == $catalogue) {
+                return $resource;
+            }
+        }
+        return false;
+    }
+
 }

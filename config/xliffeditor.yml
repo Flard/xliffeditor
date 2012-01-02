@@ -1,0 +1,8 @@
+client:
+  address: http://xliffeditor.local.devvert.nl/api
+  token: a1d73748214f7d10768d1633f158f82a
+
+resources:
+messages:
+  name: messages
+  path: frontend/messages

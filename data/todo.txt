@@ -19,3 +19,9 @@ X Manage Resource
 [API]
 - Upload
 - Download
+
+[Tasks]
+- Upload
+- Download
+- Sync
+- Setup
