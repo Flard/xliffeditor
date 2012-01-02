@@ -50,7 +50,7 @@ class Resource extends BaseResource
         if ($language !== null) {
             $q->andWhere('lr.language_id = ?', $language->id);
         }
-        return $q->fetchOne(null, Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+        return intval($q->fetchOne(null, Doctrine_Core::HYDRATE_SINGLE_SCALAR));
     }
 
     public function getPercentageComplete($language = null)

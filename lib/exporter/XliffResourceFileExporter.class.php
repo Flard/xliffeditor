@@ -62,6 +62,7 @@ class XliffResourceFileExporter extends BaseResourceFileExporter
         $catalogue = $this->resource->catalogue;
 
         $dom = $this->createDOMDocument($this->getTemplate($language->lang, $catalogue));
+
         // find the body element
         $xpath = new DomXPath($dom);
         $body = $xpath->query('//body')->item(0);

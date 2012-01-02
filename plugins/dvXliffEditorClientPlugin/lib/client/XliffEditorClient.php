@@ -39,10 +39,10 @@ class XliffEditorClient
     }
 
     protected function getCurl($endPoint) {
-        $ch = curl_init();
 
         $url = $this->apiAddress.$endPoint;
 
+        $ch = curl_init();
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_VERBOSE, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -54,8 +54,6 @@ class XliffEditorClient
     }
 
     public function uploadFile($filePath, $resourceName, $language) {
-
-        echo "Uploading $filePath [$resourceName]\r\n";
 
         $ch = $this->getCurl('/upload');
         curl_setopt($ch, CURLOPT_POST, true);
@@ -70,7 +68,29 @@ class XliffEditorClient
         $result = curl_exec($ch);
         curl_close($ch);
 
-        die($result);
+        return json_decode($result);
+    }
+
+    public function downloadFile($resourceName, $language) {
+        $getFields = array(
+            'token' => $this->token,
+            'resource_name' => $resourceName,
+            'language' => $language
+        );
+        $getFields = http_build_query($getFields);
+
+        $ch = $this->getCurl('/download?'.$getFields);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        return $result;
+    }
+
+    public function getProjectInfo() {
+        $ch = $this->getCurl('/info?token='.$this->token);
+
+        $result = curl_exec($ch);
+        curl_close($ch);
 
         return json_decode($result);
     }
