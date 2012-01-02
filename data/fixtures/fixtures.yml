@@ -13,81 +13,81 @@ Project:
         name: Labels
         catalogue: messages
         BaseLanguage: xliff_en
-  cms:
-    name: Forwart CMS Backend
+  project1:
+    name: Project 1
     Languages:
-      cms_en:
+      project1_en:
         name: English
         lang: en
-      cms_nl:
+      project1_nl:
         name: Nederlands
         lang: nl
-  module_webshop:
-    name: Forwart CMS Webshop module
+  project2:
+    name: Project 2
     Languages:
-      module_webshop_en:
+      project2_en:
         name: English
         lang: en
-      module_webshop_nl:
+      project2_nl:
         name: Nederlands
         lang: nl
-      module_webshop_de:
+      project2_de:
         name: Deutsch
         lang: de
     Resources:
-      resource_webshop_webshop:
-        name: Webshop Labels
-        catalogue: webshop
+      resource_project_label:
+        name: Project 2 Labels
+        catalogue: labels
         Lines:
           lws1:
             source_text: pager.first
             Translations:
-              lws11: { Language: module_webshop_en, target_text: 'First' }
-              lws12: { Language: module_webshop_nl, target_text: 'Eerste' }
+              lws11: { Language: project2_en, target_text: 'First' }
+              lws12: { Language: project2_nl, target_text: 'Eerste' }
           lws2:
             source_text: pager.first.title
             Translations:
-              lws21: { Language: module_webshop_en, target_text: 'Go to first page' }
-              lws22: { Language: module_webshop_nl, target_text: 'Ga naar eerste pagina' }
+              lws21: { Language: project2_en, target_text: 'Go to first page' }
+              lws22: { Language: project2_nl, target_text: 'Ga naar eerste pagina' }
           lws3:
             source_text: pager.previous
             Translations:
-              lws31: { Language: module_webshop_en, target_text: 'Previous' }
-              lws32: { Language: module_webshop_nl, target_text: 'Vorige' }
+              lws31: { Language: project2_en, target_text: 'Previous' }
+              lws32: { Language: project2_nl, target_text: 'Vorige' }
           lws4:
             source_text: pager.previous.title
             Translations:
-              lws41: { Language: module_webshop_en, target_text: 'Go to previous page' }
-              lws42: { Language: module_webshop_nl, target_text: 'Ga naar vorige pagina' }
-      resoure_webshop_checkout:
-        name: Checkout form labels
-        catalogue: checkout_form
-  module_webuser:
-    name: Forwart CMS Webusers module
+              lws41: { Language: project2_en, target_text: 'Go to previous page' }
+              lws42: { Language: project2_nl, target_text: 'Ga naar vorige pagina' }
+      resoure_project2_form:
+        name: Form labels
+        catalogue: form
+  project3:
+    name: Project 3
     Languages:
-      module_webuser_en:
+      project3_en:
         name: English
         lang: en
-      module_webuser_nl:
+      project3_nl:
         name: Nederlands
         lang: nl
-      module_webuser_de:
+      project3_de:
         name: Deutsch
         lang: de
-  SampleClient:
-    name: Example Client
+  project4:
+    name: Subproject 1
     Languages:
-      sample_en:
+      project4_en:
         name: English
         lang: en
-      sample_nl:
+      project4_nl:
         name: Nederlands
         lang: nl
-      sample_de:
+      project4_de:
         name: Duits
         lang: de
     Resources:
-      resource_sample_webshop:
-        name: Webshop Labels
-        catalogue: webshop
-        BaseResource: resource_webshop_webshop
+      project4_labels:
+        name: Labels
+        catalogue: labels
+        BaseResource: resource_project_label
